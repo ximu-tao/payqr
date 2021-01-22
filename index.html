@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="referrer" content="never" charset="UTF-8">
+    <title>西木Tao</title>
+    <style>
+        * {
+            margin: 0px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+<script type="text/javascript">
+    var userAgent = navigator.userAgent;
+
+    /*
+    function jump(url) {
+        return function name123() {
+            window.location.href=url;
+        }
+    }
+
+    function showImg(url) {
+        return function name1223() {
+            document.write(`<h1>长按图片识别二维码</h1><img src='./${url}' />`);
+        }
+    }
+*/
+    var jump = (url) => {
+        return ()=> {
+            window.location.href=url;
+        }
+    }
+
+    var showImg = (url) => {
+        return () => {
+            document.write(`<h1>长按图片识别二维码</h1><img src='./${url}' />`);
+        }
+    }
+
+    var fun = new Array();
+
+    fun[0] = showImg("wechat.png");
+    fun[1] = showImg("qq.png");
+    fun[2] = jump("https://qr.alipay.com/fkx19190wosyug46sqbqtfd" );
+
+    var re = new Array();
+
+    re[0] = /WeChat/;
+    re[1] = /QQ\//;
+    re[2] = /Alipay/;
+
+
+    var flag = 1;
+    for (let index = 0; index < fun.length; index++) {
+        if (re[index].test(userAgent)) {
+                fun[index]();
+                flag = 0;
+                break;
+            }
+    }
+    
+    if (flag) {
+        document.write("<h1>请使用已适配的应用扫码(如: 支付宝,QQ,微信)</h1>");
+    }
+</script>
+</html>
