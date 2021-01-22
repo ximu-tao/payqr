@@ -1,1 +1,0 @@
-# tao-payqr.github.io
