@@ -15,20 +15,6 @@
 </body>
 <script type="text/javascript">
     var userAgent = navigator.userAgent;
-
-    /*
-    function jump(url) {
-        return function name123() {
-            window.location.href=url;
-        }
-    }
-
-    function showImg(url) {
-        return function name1223() {
-            document.write(`<h1>长按图片识别二维码</h1><img src='./${url}' />`);
-        }
-    }
-*/
     var jump = (url) => {
         return ()=> {
             window.location.href=url;
@@ -49,10 +35,9 @@
 
     var re = new Array();
 
-    re[0] = /WeChat/;
+    re[0] = /MicroMessenger/;
     re[1] = /QQ\//;
     re[2] = /Alipay/;
-
 
     var flag = 1;
     for (let index = 0; index < fun.length; index++) {
